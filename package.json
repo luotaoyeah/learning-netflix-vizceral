@@ -4,7 +4,6 @@
   "description": "learning-netflix-vizceral",
   "scripts": {
     "clean": "rimraf dist && mkdirp dist",
-    "lint": "eslint src --ext .js --ext .jsx --fix",
     "copy:fonts": "cpx \"./node_modules/source-sans-pro/**/*\" ./dist/fonts",
     "copy:json": "cpx \"./src/*.json\" ./dist",
     "dev-server": "webpack-dev-server --host=0.0.0.0 --content-base dist/ --history-api-fallback",
@@ -46,7 +45,7 @@
     "cpx": "^1.5.0",
     "css-loader": "^0.28.11",
     "eslint": "^5.4.0",
-    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^4.1.0",
     "eslint-loader": "^2.1.0",
     "eslint-plugin-import": "^2.0.1",
     "eslint-plugin-jsx-a11y": "^6.1.1",
@@ -65,9 +64,5 @@
     "url-loader": "^0.6.2",
     "webpack": "^2.7.0",
     "webpack-dev-server": "^2.11.3"
-  },
-  "pre-commit": [
-    "lint",
-    "test"
-  ]
+  }
 }
