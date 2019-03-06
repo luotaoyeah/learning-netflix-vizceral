@@ -1,11 +1,11 @@
-'use strict';
+"use strict";
 
-import React from 'react';
+import React from "react";
 
-import './optionsPanel.css';
+import "./optionsPanel.css";
 
 class OptionsPanel extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       showOptions: false,
@@ -13,44 +13,45 @@ class OptionsPanel extends React.Component {
     };
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.setState({ alignRight: this.shouldAlignRight() });
   }
 
-  shouldAlignRight () {
+  shouldAlignRight() {
     const elm = this.refs.optionsPanel;
     const boundingRect = elm.getBoundingClientRect();
     const panelBoundingRect = elm.children[1].getBoundingClientRect();
 
-    const isEntirelyVisible = (boundingRect.left + panelBoundingRect.width <= window.innerWidth);
+    const isEntirelyVisible =
+      boundingRect.left + panelBoundingRect.width <= window.innerWidth;
     return !isEntirelyVisible;
   }
 
-  clearDocumentClick () {
+  clearDocumentClick() {
     if (this.documentClickHandler) {
-      document.removeEventListener('click', this.documentClickHandler, false);
+      document.removeEventListener("click", this.documentClickHandler, false);
       this.documentClickHandler = undefined;
     }
   }
 
-  setDocumentClick () {
+  setDocumentClick() {
     this.clearDocumentClick();
     this.documentClickHandler = this.handleDocumentClick.bind(this);
-    document.addEventListener('click', this.documentClickHandler, false);
+    document.addEventListener("click", this.documentClickHandler, false);
   }
 
-  optionsDropdownClicked () {
+  optionsDropdownClicked() {
     this.setState({
       showOptions: !this.state.showOptions,
       alignRight: this.shouldAlignRight()
     });
   }
 
-  handleDocumentClick () {
+  handleDocumentClick() {
     this.setState({ showOptions: false });
   }
 
-  componentWillUpdate (nextProps, nextState) {
+  componentWillUpdate(nextProps, nextState) {
     if (nextState.showOptions !== this.state.showOptions) {
       if (nextState.showOptions) {
         this.setDocumentClick();
@@ -60,15 +61,15 @@ class OptionsPanel extends React.Component {
     }
   }
 
-  handleClick (event) {
+  handleClick(event) {
     event.stopPropagation();
     event.nativeEvent.stopImmediatePropagation();
   }
 
-  render () {
+  render() {
     const panelStyles = {
-      visibility: !this.state.showOptions ? 'hidden' : undefined,
-      border: '1px solid grey'
+      visibility: !this.state.showOptions ? "hidden" : undefined,
+      border: "1px solid grey"
     };
 
     if (this.state.alignRight) {
@@ -76,15 +77,23 @@ class OptionsPanel extends React.Component {
     }
 
     return (
-      <div ref="optionsPanel" className="options-panel" onClick={this.optionsDropdownClicked.bind(this)}>
+      <div
+        ref="optionsPanel"
+        className="options-panel"
+        onClick={this.optionsDropdownClicked.bind(this)}
+      >
         <div className="options-panel-title">
           <a role="button" className="options-link">
             {this.props.title}
-            <span className="caret"></span>
+            <span className="caret" />
           </a>
         </div>
-        <div className="options-panel-content" style={panelStyles} onClick={this.handleClick}>
-          { this.props.children }
+        <div
+          className="options-panel-content"
+          style={panelStyles}
+          onClick={this.handleClick}
+        >
+          {this.props.children}
         </div>
       </div>
     );

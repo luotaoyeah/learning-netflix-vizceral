@@ -1,13 +1,15 @@
-'use strict';
+"use strict";
 
-import _ from 'lodash';
-import React from 'react';
-import { Tooltip, OverlayTrigger } from 'react-bootstrap';
+import _ from "lodash";
+import React from "react";
+import { Tooltip, OverlayTrigger } from "react-bootstrap";
 
-import './updateStatus.css';
+import "./updateStatus.css";
 
-function msToTimeAgo (ms) {
-  if (!ms) { return 'Unknown'; }
+function msToTimeAgo(ms) {
+  if (!ms) {
+    return "Unknown";
+  }
   const secs = Math.round(ms / 1000);
   const hours = Math.floor(secs / (60 * 60));
 
@@ -26,40 +28,42 @@ function msToTimeAgo (ms) {
   }
   timeAgo.push(`${seconds}s`);
   // return { h: hours, m: minutes, s: seconds };
-  return timeAgo.join(':');
+  return timeAgo.join(":");
 }
 
 class UpdateStatus extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       status: this.updateFreshness(props.status)
     };
   }
 
-  updateFreshness (status) {
+  updateFreshness(status) {
     const currentTime = Date.now() - this.props.baseOffset;
-    _.each(status, (s) => {
+    _.each(status, s => {
       s.fresh = currentTime - (s.updated || 0) < this.props.warnThreshold;
     });
     return status;
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.timer = setInterval(this.update.bind(this), 100);
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     clearInterval(this.timer);
   }
 
-  update () {
+  update() {
     this.setState({ status: this.updateFreshness(this.props.status) });
   }
 
-  render () {
+  render() {
     const freshData = _.every(this.state.status, status => status.fresh);
-    const glyphClass = `glyphicon glyphicon-refresh ${freshData ? 'severity0' : 'severity1'}`;
+    const glyphClass = `glyphicon glyphicon-refresh ${
+      freshData ? "severity0" : "severity1"
+    }`;
     const now = Date.now();
 
     const tooltip = (
@@ -67,14 +71,16 @@ class UpdateStatus extends React.Component {
         <p className="header">Data last refreshed</p>
         <table className="table table-condensed table-borderless">
           <tbody>
-            {
-              this.props.status.map(status => (
-                <tr key={status.region}>
-                  <td>{status.region}:</td>
-                  <td><span className={status.fresh ? 'severity0' : 'severity1'}>{ msToTimeAgo(now - status.updated) }</span></td>
-                </tr>
-              ))
-            }
+            {this.props.status.map(status => (
+              <tr key={status.region}>
+                <td>{status.region}:</td>
+                <td>
+                  <span className={status.fresh ? "severity0" : "severity1"}>
+                    {msToTimeAgo(now - status.updated)}
+                  </span>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </Tooltip>
@@ -82,7 +88,7 @@ class UpdateStatus extends React.Component {
     return (
       <div className="update-status">
         <OverlayTrigger placement="bottom" overlay={tooltip}>
-          <span className={glyphClass}></span>
+          <span className={glyphClass} />
         </OverlayTrigger>
       </div>
     );
@@ -90,10 +96,12 @@ class UpdateStatus extends React.Component {
 }
 
 UpdateStatus.propTypes = {
-  status: React.PropTypes.arrayOf(React.PropTypes.shape({
-    region: React.PropTypes.string,
-    updated: React.PropTypes.number
-  })),
+  status: React.PropTypes.arrayOf(
+    React.PropTypes.shape({
+      region: React.PropTypes.string,
+      updated: React.PropTypes.number
+    })
+  ),
   warnThreshold: React.PropTypes.number,
   baseOffset: React.PropTypes.number
 };

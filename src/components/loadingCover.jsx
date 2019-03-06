@@ -1,28 +1,27 @@
-'use strict';
+"use strict";
 
-import React from 'react';
-import TWEEN from 'tween.js';
+import React from "react";
+import TWEEN from "tween.js";
 
-import './loadingCover.css';
+import "./loadingCover.css";
 
-const logo = require('url-loader!./vizceral-mark.png'); // eslint-disable-line import/no-extraneous-dependencies
+const logo = require("url-loader!./vizceral-mark.png"); // eslint-disable-line import/no-extraneous-dependencies
 
 const helperStyles = {
-  display: 'inline-block',
-  height: '100%',
-  verticalAlign: 'middle'
+  display: "inline-block",
+  height: "100%",
+  verticalAlign: "middle"
 };
 
 const loaderStyles = {
-  display: 'inline-block',
-  verticalAlign: 'middle',
-  fontSize: '1.5em',
-  color: '#555'
+  display: "inline-block",
+  verticalAlign: "middle",
+  fontSize: "1.5em",
+  color: "#555"
 };
 
-
 class LoadingCover extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       show: props.show,
@@ -30,7 +29,7 @@ class LoadingCover extends React.Component {
     };
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps(nextProps) {
     if (nextProps.show !== this.props.show) {
       if (!nextProps.show) {
         // If transitioning to not show...
@@ -53,9 +52,9 @@ class LoadingCover extends React.Component {
     }
   }
 
-  render () {
+  render() {
     const wrapperStyles = {
-      display: this.state.showing ? 'initial' : 'none'
+      display: this.state.showing ? "initial" : "none"
     };
 
     const coverStyles = {
@@ -64,16 +63,17 @@ class LoadingCover extends React.Component {
 
     return (
       <div className="loading-cover-wrapper" style={wrapperStyles}>
-        { this.state.showing
-          ? <div className="loading-cover" style={coverStyles}>
-            <span style={helperStyles}></span>
+        {this.state.showing ? (
+          <div className="loading-cover" style={coverStyles}>
+            <span style={helperStyles} />
             <div style={loaderStyles}>
               <img className="loading-image" src={logo} />
-                Loading...
+              Loading...
             </div>
           </div>
-          : undefined
-        }
+        ) : (
+          undefined
+        )}
       </div>
     );
   }

@@ -1,26 +1,29 @@
 html {
-    min-height: 100%;
-    height:100%;
+  min-height: 100%;
+  height: 100%;
 }
 body {
-    position: relative;
-    background-color: var(--colorPageBackground);
-    color: var(--colorText);
-    font-family: 'Source Sans Pro', sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    height: 100%;
+  position: relative;
+  background-color: var(--colorPageBackground);
+  color: var(--colorText);
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  height: 100%;
 }
 
-.color-normal, .severity0 {
+.color-normal,
+.severity0 {
   color: var(--colorNormal);
 }
 
-.color-warning, .severity1 {
+.color-warning,
+.severity1 {
   color: var(--colorWarning);
 }
 
-.color-danger, .severity2 {
+.color-danger,
+.severity2 {
   color: var(--colorDanger);
 }
 
@@ -31,20 +34,20 @@ body {
 /* Custom page CSS
 -------------------------------------------------- */
 body > .container {
-    position: absolute;
-    top: 51px;
-    padding-left: 0;
-    padding-right: 0;
-    margin-left: 0;
-    margin-right: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
+  position: absolute;
+  top: 51px;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: 0;
+  margin-right: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
 }
 
 .container .text-muted {
-    margin: 20px 0;
+  margin: 20px 0;
 }
 
 .navbar {
@@ -96,7 +99,8 @@ body > .container {
   cursor: pointer;
 }
 
-:root, .vizceral {
+:root,
+.vizceral {
   --colorText: rgb(214, 214, 214);
   --colorTextDisabled: rgb(129, 129, 129);
   --colorNormal: rgb(186, 213, 237);
@@ -164,7 +168,7 @@ body > .container {
   z-index: 1000;
 }
 .stepper > li:after {
-  content: '';
+  content: "";
   position: absolute;
   display: block;
   background: var(--colorNormalDonut);
@@ -181,11 +185,11 @@ body > .container {
   color: var(--colorNormal);
 }
 .stepper > li.is-lower:before {
-  color: #FFF;
+  color: #fff;
   background: var(--colorNormal);
 }
 .stepper > li.is-lower:after {
-  color: #FFF;
+  color: #fff;
 }
 .stepper > li.show-bar:after {
   background: var(--colorNormal);
@@ -194,7 +198,7 @@ body > .container {
   color: var(--colorNormal);
 }
 .stepper > li.is-current:before {
-  color: #FFF;
+  color: #fff;
   background: var(--colorNormal);
 }
 /* END STEPPER */
@@ -240,18 +244,21 @@ body > .container {
   border-bottom: 1px solid var(--colorBorderLines);
 }
 
-.ReactVirtualized__Table__headerColumn:first-of-type, .ReactVirtualized__Table__rowColumn:first-of-type {
-     margin-left: 0 !important;
+.ReactVirtualized__Table__headerColumn:first-of-type,
+.ReactVirtualized__Table__rowColumn:first-of-type {
+  margin-left: 0 !important;
 }
 
-.ReactVirtualized__Table__headerColumn:focus, .ReactVirtualized__Table__Grid:focus {
+.ReactVirtualized__Table__headerColumn:focus,
+.ReactVirtualized__Table__Grid:focus {
   outline: none;
 }
 .ReactVirtualized__Table__row {
   border-bottom: 1px solid var(--colorBorderLines);
 }
 
-.ReactVirtualized__Table__headerColumn:last-of-type, .ReactVirtualized__Table__rowColumn:last-of-type {
+.ReactVirtualized__Table__headerColumn:last-of-type,
+.ReactVirtualized__Table__rowColumn:last-of-type {
   margin-right: 0 !important;
 }
 
@@ -266,43 +273,50 @@ a.accordion-toggle {
 
 /* SPINNER */
 @keyframes spinner {
-    to {transform: rotate(360deg);}
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @-webkit-keyframes spinner {
-    to {-webkit-transform: rotate(360deg);}
+  to {
+    -webkit-transform: rotate(360deg);
+  }
 }
 
 .inline-spinner {
-    min-width: 30px;
-    min-height: 2px;
-    position: relative;
-    display: inline-block;
+  min-width: 30px;
+  min-height: 2px;
+  position: relative;
+  display: inline-block;
 }
 
 .inline-spinner:after {
-    content: 'Loading…';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 13px;
-    height: 13px;
-    margin-top: -10px;
-    margin-left: -10px;
+  content: "Loading…";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 13px;
+  height: 13px;
+  margin-top: -10px;
+  margin-left: -10px;
 }
 
 .inline-spinner:not(:required):after {
-    content: '';
-    border-radius: 50%;
-    border: 2px solid rgba(129, 129, 129, .3);
-    border-top-color: rgba(129, 129, 129, .6);
-    animation: spinner .6s linear infinite;
-    -webkit-animation: spinner .6s linear infinite;
-    -moz-animation: spinner .6s linear infinite;
+  content: "";
+  border-radius: 50%;
+  border: 2px solid rgba(129, 129, 129, 0.3);
+  border-top-color: rgba(129, 129, 129, 0.6);
+  animation: spinner 0.6s linear infinite;
+  -webkit-animation: spinner 0.6s linear infinite;
+  -moz-animation: spinner 0.6s linear infinite;
 }
 /* END SPINNER */
 
-.clear-link-styles, .clear-link-styles:hover, .clear-link-styles:active, .clear-link-styles:visited {
+.clear-link-styles,
+.clear-link-styles:hover,
+.clear-link-styles:active,
+.clear-link-styles:visited {
   color: inherit;
   text-decoration: inherit;
 }
@@ -317,7 +331,11 @@ a.accordion-toggle {
   font-size: 10px;
 }
 
-.links-popover-link, .links-popover-link a, .links-popover-link a:active, .links-popover-link a:hover, .links-popover-link a:visited {
+.links-popover-link,
+.links-popover-link a,
+.links-popover-link a:active,
+.links-popover-link a:hover,
+.links-popover-link a:visited {
   color: rgb(110, 104, 99);
   cursor: pointer;
   font-size: 12px;
@@ -326,21 +344,23 @@ a.accordion-toggle {
 
 .popover {
   border-radius: 3px !important;
-  font-family: 'Source Sans Pro', sans-serif !important;
+  font-family: "Source Sans Pro", sans-serif !important;
 }
 
 .popover-content {
   padding: 6px 8px !important;
 }
 
-.table-borderless tbody tr td, .table-borderless tbody tr th, .table-borderless thead tr th {
-    border: none;
-    padding: 0;
+.table-borderless tbody tr td,
+.table-borderless tbody tr th,
+.table-borderless thead tr th {
+  border: none;
+  padding: 0;
 }
 
 .tooltip-inner {
   max-width: 250px;
-  font-family: 'Source Sans Pro', sans-serif !important;
+  font-family: "Source Sans Pro", sans-serif !important;
   line-height: 1.5em;
 }
 

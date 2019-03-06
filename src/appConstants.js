@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-import keymirror from 'keymirror';
+import keymirror from "keymirror";
 
 const AppConstants = {
   ActionTypes: keymirror({

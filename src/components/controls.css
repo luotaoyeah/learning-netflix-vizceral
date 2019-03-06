@@ -8,19 +8,19 @@
   padding-right: 5px;
 }
 
-.vizceral-controls-panel div, .vizceral-controls-panel input[type=range] {
+.vizceral-controls-panel div,
+.vizceral-controls-panel input[type="range"] {
   display: inline-block;
 }
 
-.vizceral-controls-panel input[type=checkbox] {
+.vizceral-controls-panel input[type="checkbox"] {
   padding: 0 3px 0 3px;
 }
 
-.vizceral-controls-panel input[type=radio] {
+.vizceral-controls-panel input[type="radio"] {
   margin-right: 5px;
 }
 
 .vizceral-controls-panel .radio-control:not(:first-child) {
   margin-left: 5px;
 }
-

@@ -5,9 +5,9 @@
   display: inline-block;
   width: 160px;
 }
-.physics-options > div > input[type=checkbox] {
+.physics-options > div > input[type="checkbox"] {
   margin-right: 5px;
 }
-.physics-options > div > input[type=number] {
+.physics-options > div > input[type="number"] {
   width: 60px;
 }

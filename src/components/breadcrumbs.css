@@ -21,7 +21,7 @@
 }
 
 .breadcrumbs li:after {
-  content: ' / ';
+  content: " / ";
 }
 
 .breadcrumbs li:last-child:after {

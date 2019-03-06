@@ -1,46 +1,61 @@
-'use strict';
+"use strict";
 
-import React from 'react';
+import React from "react";
 
 class DetailsSubpanel extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       expanded: props.expanded ? props.expanded : false
     };
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps(nextProps) {
     this.setState({ expanded: nextProps.expanded });
   }
 
-  render () {
+  render() {
     const { badge } = this.props;
-    const title = this.props.title.replace(/\s/g, '_');
+    const title = this.props.title.replace(/\s/g, "_");
     const headingId = `${title}Heading`;
     const collapseId = `collapse${title}`;
 
     const { expanded } = this.state;
-    const iconClass = `glyphicon ${expanded ? 'glyphicon-chevron-down' : 'glyphicon-chevron-right'}`;
+    const iconClass = `glyphicon ${
+      expanded ? "glyphicon-chevron-down" : "glyphicon-chevron-right"
+    }`;
     const iconStyle = {
-      fontSize: '12px',
-      paddingRight: expanded ? '5px' : undefined
+      fontSize: "12px",
+      paddingRight: expanded ? "5px" : undefined
     };
     return (
       <div className="panel-group node-details-subpanel" role="tablist">
         <div className="panel panel-default">
           <div className="panel-heading" role="tab" id={headingId}>
             <h4 className="panel-title">
-              <a role="button" data-toggle="collapse" href={`#${collapseId}`} aria-controls={collapseId} className={`accordion-toggle${expanded ? '' : ' collapsed'}`} onClick={() => this.setState({ expanded: !expanded })}>
-                <span className={iconClass} style={iconStyle}></span> {this.props.title.toUpperCase()} {badge ? <span className="badge">{badge}</span> : undefined}
+              <a
+                role="button"
+                data-toggle="collapse"
+                href={`#${collapseId}`}
+                aria-controls={collapseId}
+                className={`accordion-toggle${expanded ? "" : " collapsed"}`}
+                onClick={() => this.setState({ expanded: !expanded })}
+              >
+                <span className={iconClass} style={iconStyle} />{" "}
+                {this.props.title.toUpperCase()}{" "}
+                {badge ? <span className="badge">{badge}</span> : undefined}
               </a>
             </h4>
           </div>
-          <div id={collapseId} className={`panel-collapse collapse${expanded ? ' in' : ''}`} role="tabpanel" aria-labelledby={headingId} aria-expanded={expanded ? 'true' : 'false'}>
+          <div
+            id={collapseId}
+            className={`panel-collapse collapse${expanded ? " in" : ""}`}
+            role="tabpanel"
+            aria-labelledby={headingId}
+            aria-expanded={expanded ? "true" : "false"}
+          >
             <div className="panel-body">
-              <div className="subsection">
-                {this.props.children}
-              </div>
+              <div className="subsection">{this.props.children}</div>
             </div>
           </div>
         </div>

@@ -35,10 +35,10 @@
 }
 
 .details-panel-close {
-  font-family: 'Glyphicons Halflings';  /* essential for enabling glyphicon */
+  font-family: "Glyphicons Halflings"; /* essential for enabling glyphicon */
   content: "\e114";
   font-size: 12px;
-  position:absolute;
+  position: absolute;
   top: 6px;
   right: 10px;
   padding: 10px 5px 0 10px;
@@ -78,13 +78,14 @@
   border-bottom: none;
 }
 
-.connection-list .table-container, .subnode-list .table-container {
+.connection-list .table-container,
+.subnode-list .table-container {
   max-height: 200px;
   overflow: auto;
 }
 
 .connection-list .ReactVirtualized__Table__row:focus {
-  outline:0;
+  outline: 0;
 }
 
 .table-header > .table > thead > tr > th {

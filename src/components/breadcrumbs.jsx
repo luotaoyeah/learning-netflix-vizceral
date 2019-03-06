@@ -1,22 +1,21 @@
-'use strict';
+"use strict";
 
-import React from 'react';
+import React from "react";
 
-import './breadcrumbs.css';
+import "./breadcrumbs.css";
 
 class Breadcrumbs extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
-    this.state = {
-    };
+    this.state = {};
   }
 
-  handleClick (index) {
+  handleClick(index) {
     const newState = this.props.navigationStack.slice(0, index + 1);
     this.props.navigationCallback(newState);
   }
 
-  shouldComponentUpdate (nextProps) {
+  shouldComponentUpdate(nextProps) {
     if (nextProps.navigationStack) {
       if (nextProps.navigationStack.length !== this.props.navigationStack) {
         return true;
@@ -31,18 +30,29 @@ class Breadcrumbs extends React.Component {
     return false;
   }
 
-  render () {
+  render() {
     const navStack = this.props.navigationStack.slice() || [];
     navStack.unshift(this.props.rootTitle);
 
     return (
       <div className="breadcrumbs">
         <ol>
-          {
-            navStack.map((state, index) => ((index !== navStack.length - 1)
-              ? <li key={index + state}><a className="clickable" onClick={() => { this.handleClick(index - 1); }}>{ state }</a></li>
-              : <li key={index + state}>{ state }</li>))
-          }
+          {navStack.map((state, index) =>
+            index !== navStack.length - 1 ? (
+              <li key={index + state}>
+                <a
+                  className="clickable"
+                  onClick={() => {
+                    this.handleClick(index - 1);
+                  }}
+                >
+                  {state}
+                </a>
+              </li>
+            ) : (
+              <li key={index + state}>{state}</li>
+            )
+          )}
         </ol>
       </div>
     );

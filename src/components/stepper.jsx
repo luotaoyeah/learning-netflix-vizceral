@@ -1,34 +1,42 @@
-'use strict';
+"use strict";
 
-import React from 'react';
+import React from "react";
 
 class Stepper extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
-    this.state = {
-    };
+    this.state = {};
   }
 
-  stepChanged (index) {
+  stepChanged(index) {
     this.props.changeCallback(index);
   }
 
-  render () {
+  render() {
     return (
       <ol className="stepper">
-        {
-          this.props.steps.map((step, index) => {
-            let className = this.props.selectedStep === index ? 'is-current' : undefined;
-            className = className || this.props.selectedStep > index ? 'is-lower' : undefined;
-            if (className === 'is-lower' && this.props.selectedStep > index) { className += ' show-bar'; }
-            let stepName = step.name ? step.name.trim() : undefined;
-            stepName = stepName || '&nbsp;';
-            return (
-              <li key={index} className={className} data-step=" " onClick={() => this.stepChanged(index)} dangerouslySetInnerHTML={{ __html: stepName }}>
-              </li>
-            );
-          })
-        }
+        {this.props.steps.map((step, index) => {
+          let className =
+            this.props.selectedStep === index ? "is-current" : undefined;
+          className =
+            className || this.props.selectedStep > index
+              ? "is-lower"
+              : undefined;
+          if (className === "is-lower" && this.props.selectedStep > index) {
+            className += " show-bar";
+          }
+          let stepName = step.name ? step.name.trim() : undefined;
+          stepName = stepName || "&nbsp;";
+          return (
+            <li
+              key={index}
+              className={className}
+              data-step=" "
+              onClick={() => this.stepChanged(index)}
+              dangerouslySetInnerHTML={{ __html: stepName }}
+            />
+          );
+        })}
       </ol>
     );
   }

@@ -1,15 +1,15 @@
 /* eslint no-restricted-syntax: 0 */
 
-'use strict';
+"use strict";
 
-import React from 'react';
+import React from "react";
 
-import Notices from './notices';
+import Notices from "./notices";
 
-import './detailsPanel.css';
+import "./detailsPanel.css";
 
 class DetailsPanelConnection extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       connection: props.connection,
@@ -17,7 +17,7 @@ class DetailsPanelConnection extends React.Component {
     };
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps(nextProps) {
     const newState = {
       region: nextProps.region,
       connection: nextProps.connection
@@ -26,17 +26,19 @@ class DetailsPanelConnection extends React.Component {
     this.setState(newState);
   }
 
-  render () {
+  render() {
     const { connection } = this.state;
     const notices = (connection && connection.notices) || [];
 
     return (
       <div className="details-panel">
         <div className="subsection">
-          <div className="details-panel-title">{connection.getName()}
-          </div>
-          <div className="details-panel-close" onClick={this.props.closeCallback}>
-            <span className="glyphicon glyphicon-remove" aria-hidden="true"></span>
+          <div className="details-panel-title">{connection.getName()}</div>
+          <div
+            className="details-panel-close"
+            onClick={this.props.closeCallback}
+          >
+            <span className="glyphicon glyphicon-remove" aria-hidden="true" />
           </div>
         </div>
         <Notices notices={notices} />
@@ -54,7 +56,7 @@ DetailsPanelConnection.propTypes = {
 
 DetailsPanelConnection.defaultProps = {
   nodeClicked: () => {},
-  region: ''
+  region: ""
 };
 
 export default DetailsPanelConnection;

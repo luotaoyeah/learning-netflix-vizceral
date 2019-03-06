@@ -1,52 +1,76 @@
-'use strict';
+"use strict";
 
-import React from 'react';
+import React from "react";
 
-import './locator.css';
+import "./locator.css";
 
 const style = {
-  display: 'inline-block',
-  position: 'relative'
+  display: "inline-block",
+  position: "relative"
 };
 
 const listStyle = {
-  display: 'inline-block',
-  position: 'relative',
-  paddingRight: '5px'
+  display: "inline-block",
+  position: "relative",
+  paddingRight: "5px"
 };
 
 class Locator extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
-    this.state = {
-    };
+    this.state = {};
   }
 
-  locatorChanged (value) {
+  locatorChanged(value) {
     this.props.changeCallback(value);
   }
 
-  clearFilterClicked () {
+  clearFilterClicked() {
     if (this.props.clearFilterCallback) {
       this.props.clearFilterCallback();
     }
   }
 
-  render () {
-    const totalServices = this.props.matches.totalMatches > -1 ? this.props.matches.totalMatches : this.props.matches.total;
-    const filteredServices = totalServices - (this.props.matches.visibleMatches > -1 ? this.props.matches.visibleMatches : this.props.matches.visible);
+  render() {
+    const totalServices =
+      this.props.matches.totalMatches > -1
+        ? this.props.matches.totalMatches
+        : this.props.matches.total;
+    const filteredServices =
+      totalServices -
+      (this.props.matches.visibleMatches > -1
+        ? this.props.matches.visibleMatches
+        : this.props.matches.visible);
 
     return (
       <div style={style}>
-        <div style={listStyle}>{totalServices} services / {filteredServices} filtered &nbsp;
-          { filteredServices > 0
-            ? <span className="clickable" onClick={this.clearFilterClicked.bind(this)}>(show)</span>
-            : undefined
-          }
+        <div style={listStyle}>
+          {totalServices} services / {filteredServices} filtered &nbsp;
+          {filteredServices > 0 ? (
+            <span
+              className="clickable"
+              onClick={this.clearFilterClicked.bind(this)}
+            >
+              (show)
+            </span>
+          ) : (
+            undefined
+          )}
         </div>
         <div style={style}>
-          <input type="search" className="form-control locator-input" placeholder="Locate Service" onChange={(event) => { this.locatorChanged(event.currentTarget.value); }} value={this.props.searchTerm} />
-          <span className="glyphicon glyphicon-search form-control-feedback" style={{ height: '24px', lineHeight: '24px' }}></span>
+          <input
+            type="search"
+            className="form-control locator-input"
+            placeholder="Locate Service"
+            onChange={event => {
+              this.locatorChanged(event.currentTarget.value);
+            }}
+            value={this.props.searchTerm}
+          />
+          <span
+            className="glyphicon glyphicon-search form-control-feedback"
+            style={{ height: "24px", lineHeight: "24px" }}
+          />
         </div>
       </div>
     );

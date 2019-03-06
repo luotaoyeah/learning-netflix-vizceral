@@ -1,10 +1,10 @@
-'use strict';
+"use strict";
 
-import AppDispatcher from '../appDispatcher';
-import AppConstants from '../appConstants';
+import AppDispatcher from "../appDispatcher";
+import AppConstants from "../appConstants";
 
 export default {
-  updateFilter: (filters) => {
+  updateFilter: filters => {
     AppDispatcher.handleAction({
       actionType: AppConstants.ActionTypes.UPDATE_FILTER,
       data: filters
